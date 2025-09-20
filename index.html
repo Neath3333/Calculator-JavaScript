@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="Calculator">
+        <div class="title-bar">
+            <h3>Calculator</h3>
+            <div class="control">
+                <button class="maximize">🗖</button>
+                <button class="minimize">🗕</button>
+                <button class="close">❌</button>
+            </div>
+        </div>
+        <div class="body-calculator">
+            <div class="mode-selector">
+                <button class="hamburger">☰</button>
+                <span class="mode">Standard</span>
+                <button class="history">⟲</button>
+            </div>
+
+        </div>
+        <div class="display">
+            <div class="equation" id="equation"></div>
+            <div class="result" id="result"></div>
+        </div>
+        <div class="memory-row">
+            <button class="memory-btn" id="mc" disabled>MC</button>
+            <button class="memory-btn" id="mr" disabled>MR</button>
+            <button class="memory-btn" id="mplus">M+</button>
+            <button class="memory-btn" id="mminus">M-</button>
+            <button class="memory-btn" id="ms">MS</button>
+            <button class="memory-btn" id="mlist" disabled>M↑</button>
+        </div>
+        <div class="buttons">
+            <button class="btn" onclick="percentage()">%</button>
+            <button class="btn" onclick="squareroot()">√</button>
+            <button class="btn" onclick="square()">x²</button>
+            <button class="btn" onclick="reciprocal()">¹⁄ₓ</button>
+
+            <button class="btn" onclick="clearEntry()">CE</button>
+            <button class="btn" onclick="clearAll()">C</button>
+            <button class="btn" onclick="backspace()">⌫</button>
+            <button class="btn operator" onclick="setOperator('÷')">÷</button>
+
+            <button class="btn num" onclick="inputNumber('7')">7</button>
+            <button class="btn num" onclick="inputNumber('8')">8</button>
+            <button class="btn num" onclick="inputNumber('9')">9</button>
+            <button class="btn operator" onclick="setOperator('×')">×</button>
+
+            <button class="btn num" onclick="inputNumber('4')">4</button>
+            <button class="btn num" onclick="inputNumber('5')">5</button>
+            <button class="btn num" onclick="inputNumber('6')">6</button>
+            <button class="btn operator" onclick="setOperator('-')">-</button>
+
+            <button class="btn num" onclick="inputNumber('1')">1</button>
+            <button class="btn num" onclick="inputNumber('2')">2</button>
+            <button class="btn num" onclick="inputNumber('3')">3</button>
+            <button class="btn operator" onclick="setOperator('+')">+</button>
+
+            <button class="btn" onclick="toggleSign()">±</button>
+            <button class="btn num" onclick="inputNumber('0')">0</button>
+            <button class="btn num" onclick="inputDecimal()">.</button>
+            <button class="btn equals" onclick="calculate()">=</button>
+
+        </div>
+    </div>
+    </div>
+
+</body>
+<script src="index.js"></script>
+
+</html>
