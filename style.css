@@ -35,9 +35,6 @@ body {
     gap: 10px;
 
 }
-
-.minimize,
-.maximize,
 .close {
     width: 15px;
     height: 15px;
@@ -130,21 +127,23 @@ body {
 
 .buttons {
 
-    background: #999999;
+    
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
+   padding: 10px;
+   gap: 2px;
 }
 .btn {
     width: max;
-    height: 70px;
+    height: 90px;
     font-size: larger;
     cursor: pointer;
+    border: none;
+    border-radius: 6px;
 }
 .num{
     background: rgb(255, 255, 255);
     border-color: #e6e6e6;
-    font-weight: bold;
 }
 .num:hover{
     background: #e6e6e6;
