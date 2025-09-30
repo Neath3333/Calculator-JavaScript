@@ -1,361 +1,315 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+ body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
 
-}
+        .Calculator {
+            width: 400px;
+            overflow: hidden;
+            align-items: center;
+            justify-content: flex-start;
+            margin: auto;
+            margin-top: 50px;
+            margin-left: 20px;
+            position: relative;
+        }
 
-.Calculator {
-    width: 400px;
-    overflow: hidden;
-    align-items: center;
-    justify-content: flex-start;
-    margin: auto;
-    margin-top: 50px;
-    margin-left: 20px;
-    position: relative;
+        .title-bar {
+            display: flex;
+            padding: 0 15px;
+            justify-content: space-between;
+        }
 
-}
+        .title-bar h3 {
+            font-size: 15px;
+            width: fit-content;
+            font-weight: normal;
+        }
 
-.title-bar {
-    display: flex;
-    padding: 0 15px;
-    justify-content: space-between;
+        .control {
+            display: flex;
+            margin-top: 10px;
+            height: fit-content;
+            gap: 10px;
+        }
 
-}
+        .close, .maximize, .minimize {
+            width: 15px;
+            height: 15px;
+            border: none;
+            cursor: pointer;
+            background: none;
+        }
 
-.title-bar h3 {
-    font-size: 15px;
-    width: fit-content;
-    font-weight: normal;
-}
+        .body-calculator {
+            padding: 0 15px;
+        }
 
-.control {
-    display: flex;
-    margin-top: 10px;
-    height: fit-content;
-    gap: 10px;
+        .mode-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 10px;
+        }
 
-}
+        .hamburger {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
 
-.close,.maximize,.minimize {
-    width: 15px;
-    height: 15px;
-    border: none;
-    cursor: pointer;
-    background:none;
-}
+        .mode {
+            font-size: 30px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
 
-.body-calculator {
-    padding: 0 15px;
+        .history {
+            margin-left: 170px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 30px;
+        }
 
-}
+        .display {
+            text-align: right;
+            height: 150px;
+            margin-bottom: 10px;
+        }
 
-.mode-selector {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    gap: 10px;
+        .equation {
+            font-size: 20px;
+            color: #4d4d4d;
+            margin: 0;
+            padding-top: 20px;
+            height: 50px;
+            padding-right: 10px;
+        }
 
-}
+        .result {
+            font-size: 50px;
+            margin: 0;
+            color: black;
+            height: 80px;
+            padding: 20px;
+        }
 
-.hamburger {
-    background: none;
-    border: none;
-    left: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    top: 20px;
-    left: 20px;
-    z-index: 1100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-}
+        .memory-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
 
+        .memory-btn {
+            width: 48px;
+            height: 40px;
+            background-color: #e6e6e6;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            background: none;
+            border: none;
+            font-weight: 400;
+        }
 
-.mode {
-    font-size: 30px;
-    margin-left: 10px;
-    font-weight: bold;
-}
+        .memory-btn:hover {
+            background-color: #cccccc;
+        }
 
-.history {
-    margin-left: 170px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 30px;
-}
+        .memory-btn:disabled {
+            color: #999999;
+            cursor: not-allowed;
+        }
 
-.display {
-    text-align: right;
-    height: 150px;
-    margin-bottom: 10px;
-}
+        /* Main buttons container - dynamic grid */
+        .buttons {
+            display: grid;
+            gap: 2px;
+            padding: 10px;
+        }
 
-.equation {
-    font-size: 20px;
-    color: #4d4d4d;
-    margin: 0;
-    padding-top: 20px;
-    height: 50px;
-    padding-right: 10px;
-}
+        /* Standard mode: 4 columns */
+        .Calculator[data-mode="standard"] .buttons {
+            grid-template-columns: repeat(4, 1fr);
+        }
 
-.result {
-    font-size: 50px;
-    margin: 0;
-    color: black;
-    height: 80px;
-    padding: 20px;
-}
+        /* Scientific mode: 5 columns */
+        .Calculator[data-mode="scientific"] .buttons {
+            grid-template-columns: repeat(5, 1fr);
+        }
 
-.memory-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
+        /* Programmer mode: 5 columns */
+        .Calculator[data-mode="programmer"] .buttons {
+            grid-template-columns: repeat(5, 1fr);
+        }
 
-.memory-btn {
-    width: 48px;
-    height: 40px;
-    background-color: #e6e6e6;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    background: none;
-    border: none;
-    font-weight: 400;
-}
+        .btn {
+            width: 100%;
+            height: 90px;
+            font-size: larger;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            border: #d2d1d1 solid 0.2px;
+        }
 
-.memory-btn:hover {
-    background-color: #cccccc;
-}
+        .num, .btn.posNag {
+            background: rgb(255, 255, 255);
+            border-color: #e6e6e6;
+        }
 
-.memory-btn:disabled {
-    color: #999999;
-    cursor: not-allowed;
-}
+        .num:hover {
+            background: #e6e6e6;
+        }
 
-.buttons {
+        .btn.equals {
+            background-color: rgb(42, 120, 236);
+            color: white;
+        }
 
+        /* Hide buttons that don't exist in current mode */
+        .btn.hidden {
+            display: none;
+        }
 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 10px;
-    gap: 2px;
+        /* Scientific buttons styling */
+        .Calculator[data-mode="scientific"] .btn,
+        .Calculator[data-mode="programmer"] .btn {
+            height: 60px;
+            font-size: 16px;
+        }
 
-}
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 200px;
+            height: 100%;
+            color: white;
+            padding: 20px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            background-color: white;
+            color: black;
+            border-radius: 0 5px;
+            padding-top: 130px;
+            border: #d7d7d7 solid 0.1px;
+        }
 
-.btn {
-    width: max;
-    height: 90px;
-    font-size: larger;
-    cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    border: #d2d1d1 solid 0.2px;
-}
+        .side-menu.show {
+            left: 0;
+        }
 
-.num,.btn.posNag{
-    background: rgb(255, 255, 255);
-    border-color: #e6e6e6;
-}
+        .side-menu h4 {
+            margin-top: 50px;
+        }
 
-.num:hover {
-    background: #e6e6e6;
-}
+        .side-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-left: 0;
+            padding-left: 0;
+        }
 
-.side-menu {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    /* hide menu off-screen */
-    width: 200px;
-    height: 100%;
-    color: white;
-    padding: 20px;
-    transition: left 0.3s ease;
-    z-index: 1000;
-    background-color: white;
-    color: black;
-    border-radius: 0 5px;
-    padding-top: 130px;
-    border: #d7d7d7 solid 0.1px;
+        .side-menu li:hover,
+        .side-menu li.active {
+            background-color: #f9f8f8;
+        }
 
-}
-.side-menu.show {
-    left: 0;
-}
-.side-menu h4{
-    margin-top: 50px;
-}
+        .side-menu li {
+            position: relative;
+            padding: 5px;
+            cursor: pointer;
+        }
 
-.side-menu ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin-left: 0;
-    padding-left: 0;
-}
+        .side-menu li.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 4px;
+            background-color: #007bff;
+            border-radius: 2px;
+        }
 
-/* .side-menu ul li {
-    border: #4d4d4d;
-    width: 100%;
-    height: 50x;
-    padding: 7px;
-    border-radius: 8px;
-    cursor: pointer;
-    
-} */
+        .base-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px;
+            background-color: transparent;
+            border: none;
+        }
 
-.side-menu li:hover,
-.side-menu li.active{
-    background-color: #f9f8f8;
-}
-.side-menu li {
-    position: relative;
-    padding: 5px;
-     /* needed for pseudo-element */
-}
+        .base-btn {
+            background-color: transparent;
+            border: none;
+            text-align: left;
+            padding: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
 
-.side-menu li.active::before {
-    content: '';
-    position: absolute;
-    left: 0;                 /* start at left edge inside the element */
-    top: 50%;                /* vertically center */
-    transform: translateY(-50%);
-    height: 60%;             /* smaller than full li height */
-    width: 4px;              /* thickness of the line */
-    background-color: #007bff; /* blue line */
-    border-radius: 2px;      /* optional rounding */
-}
+        .base-btn:hover {
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-.btn.equals {
-    background-color: rgb(42, 120, 236);
-    color: white;
-}
-/* ===== Standard Buttons (4 per row) ===== */
-.buttons.standard {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    padding: 10px;
-}
+        .base-btn.active::before {
+            content: '| ';
+            color: #007bff;
+            font-weight: bold;
+        }
 
-/* ===== Scientific Buttons (5 per row) ===== */
-.buttons.scientific {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 buttons per row */
-    grid-auto-rows: 60px; /* adjust row height */
-    gap: 5px;
-    padding: 10px;
-}
+        .programmer-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
 
-.buttons.scientific button {
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-     height: 60px;
-}
+        .programmer-controls button {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            padding: 8px 10px;
+            transition: background-color 0.2s ease;
+        }
 
-.buttons.scientific button:hover {
-    background-color: #dcdcdc;
-}
+        .programmer-controls button:hover {
+            background-color: #e0e0e0;
+        }
 
-/* ===== Programmer Buttons (5 per row) ===== */
-.buttons.programmer {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 buttons per row */
-    grid-auto-rows: 60px; /* adjust row height */
-    gap: 5px;
-    padding: 10px;
-}
+        .programmer-controls button.active {
+            border-bottom: 3px solid #007bff;
+        }
 
-.buttons.programmer button {
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-     height: 60px;
-}
+        .programmer-mode {
+            display: none;
+        }
 
-.buttons.programmer button:hover {
-    background-color: #dcdcdc;
-}
+        .Calculator[data-mode="programmer"] .programmer-mode {
+            display: block;
+        }
 
-.buttons.scientific.btn.equals{
-    background-color: rgb(42, 120, 236);
-    color: white;
-}
-/* Base Options (HEX/DEC/OCT/BIN) */
-.base-options {
-    display: flex;
-    flex-direction: column; /* vertical list */
-    gap: 10px;
-    margin: 20px;
-    background-color: transparent; /* remove any default background */
-    border: none;
-}
-
-.base-btn {
-    background-color: transparent; /* no background by default */
-    border: none; /* no border by default */
-    text-align: left;
-    padding: 5px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    width: 100%;
-}
-
-.base-btn:hover {
-    background-color: #e0e0e0; /* show background on hover */
-    border: 1px solid #ccc;     /* show border on hover */
-    border-radius: 5px;          /* optional rounding */
-}
-
-.base-btn.active {
-    background-color: transparent; /* keep transparent even if active */
-    border: none;
-    color: inherit; /* optional: keep text color normal */
-}
-/* Active button with | in front */
-.base-btn.active::before {
-    content: '| ';       /* vertical line and a space */
-    color: #007bff;      /* blue line */
-    font-weight: bold;   /* optional: make it stand out */
-}
-.programmer-controls {
-    display: flex;                 
-    justify-content: space-between; 
-    align-items: center;            
-    gap: 5px;                       
-    font-size: 20px;
-}
-
-.programmer-controls button {
-    flex: 1;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    padding: 8px 10px;
-    transition: background-color 0.2s ease, border-bottom 0.2s ease;
-}
-
-.programmer-controls button:hover {
-    background-color: #e0e0e0;
-}
-
-.programmer-controls button.active {
-    border-bottom: 3px solid #007bff; /* blue underline for active */
-    border-radius: 0;                 /* flat underline style */
-    background-color: transparent;
-}
-
-
+        .Calculator[data-mode="programmer"] .memory-row {
+            display: none;
+        }

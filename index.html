@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="Calculator">
-
-        <!-- Title Bar -->
+    <div class="Calculator" data-mode="standard">
         <div class="title-bar">
             <h3>Calculator</h3>
             <div class="control">
@@ -21,7 +17,6 @@
             </div>
         </div>
 
-        <!-- Mode Selector -->
         <div class="body-calculator">
             <div class="mode-selector">
                 <button id="hamburger" class="hamburger">☰</button>
@@ -29,24 +24,21 @@
                 <button class="history"></button>
             </div>
 
-            <!-- Side Menu -->
             <div id="sideMenu" class="side-menu">
                 <h4>Calculator Modes</h4>
                 <ul>
-                    <li class="active" data-type="standard" onclick="switchCalculatorMode('standard')">Standard</li>
-                    <li data-type="scientific" onclick="switchCalculatorMode('scientific')">Scientific</li>
-                    <li data-type="programmer" onclick="switchCalculatorMode('programmer')">Programmer</li>
+                    <li class="active" data-type="standard">Standard</li>
+                    <li data-type="scientific">Scientific</li>
+                    <li data-type="programmer">Programmer</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Display -->
         <div class="display">
             <div class="equation" id="equation"></div>
             <div class="result" id="result">0</div>
         </div>
 
-        <!-- Memory Row -->
         <div class="memory-row" id="memory-row">
             <button class="memory-btn" id="mc" disabled>MC</button>
             <button class="memory-btn" id="mr" disabled>MR</button>
@@ -56,151 +48,24 @@
             <button class="memory-btn" id="mlist" disabled>M↑</button>
         </div>
 
-        <!-- Standard Buttons -->
-        <div class="buttons standard" id="standard-buttons">
-            <button class="btn" onclick="percentage()">%</button>
-            <button class="btn" onclick="clearEntry()">CE</button>
-            <button class="btn" onclick="clearAll()">C</button>
-            <button class="btn" onclick="backspace()">⌫</button>
-
-            <button class="btn" onclick="reciprocal()">¹⁄ₓ</button>
-            <button class="btn" onclick="square()">x²</button>
-            <button class="btn" onclick="squareroot()">√x</button>
-            <button class="btn operator" onclick="setOperator('÷')">÷</button>
-
-            <button class="btn num" onclick="inputNumber('7')">7</button>
-            <button class="btn num" onclick="inputNumber('8')">8</button>
-            <button class="btn num" onclick="inputNumber('9')">9</button>
-            <button class="btn operator" onclick="setOperator('×')">×</button>
-
-            <button class="btn num" onclick="inputNumber('4')">4</button>
-            <button class="btn num" onclick="inputNumber('5')">5</button>
-            <button class="btn num" onclick="inputNumber('6')">6</button>
-            <button class="btn operator" onclick="setOperator('-')">-</button>
-
-            <button class="btn num" onclick="inputNumber('1')">1</button>
-            <button class="btn num" onclick="inputNumber('2')">2</button>
-            <button class="btn num" onclick="inputNumber('3')">3</button>
-            <button class="btn operator" onclick="setOperator('+')">+</button>
-
-            <button class="btn" onclick="toggleSign()">±</button>
-            <button class="btn num" onclick="inputNumber('0')">0</button>
-            <button class="btn num" onclick="inputDecimal()">.</button>
-            <button class="btn equals" onclick="calculate()">=</button>
-        </div>
-
-        <!-- Scientific Buttons -->
-        <div class="buttons scientific" id="scientific-buttons" style="display:none;">
-            <!-- Row 1 -->
-            <button class="func">2nd</button>
-            <button class="func" onclick="insertConstant(Math.PI)">π</button>
-            <button class="func" onclick="insertConstant(Math.E)">e</button>
-            <button class="btn" onclick="clearAll()">C</button>
-            <button class="btn" onclick="backspace()">⌫</button>
-            <!-- Row 2 -->
-            <button class="func" onclick="square()">x²</button>
-            <button class="func" onclick="reciprocal()">¹⁄ₓ</button>
-            <button class="func" onclick="absoluteValue()">|x|</button>
-            <button class="func" onclick="exponential()">exp</button>
-            <button class="func" onclick="modulo()">mod</button>
-            <!-- Row 3 -->
-            <button class="func" onclick="cuberoot()">³√x</button>
-            <button class="func" onclick="openParenthesis()">(</button>
-            <button class="func" onclick="closeParenthesis()">)</button>
-            <button class="func" onclick="factorial()">n!</button>
-            <button class="btn operator" onclick="setOperator('÷')">÷</button>
-            <!-- Row 4 -->
-            <button class="func" onclick="power()">xʸ</button>
-            <button class="btn num" onclick="inputNumber('7')">7</button>
-            <button class="btn num" onclick="inputNumber('8')">8</button>
-            <button class="btn num" onclick="inputNumber('9')">9</button>
-            <button class="btn operator" onclick="setOperator('×')">×</button>
-            <!-- Row 5 -->
-            <button class="func" onclick="power10()">10ˣ</button>
-            <button class="btn num" onclick="inputNumber('4')">4</button>
-            <button class="btn num" onclick="inputNumber('5')">5</button>
-            <button class="btn num" onclick="inputNumber('6')">6</button>
-            <button class="btn operator" onclick="setOperator('-')">-</button>
-            <!-- Row 6 -->
-            <button class="func" onclick="logarithm()">log</button>
-            <button class="btn num" onclick="inputNumber('1')">1</button>
-            <button class="btn num" onclick="inputNumber('2')">2</button>
-            <button class="btn num" onclick="inputNumber('3')">3</button>
-            <button class="btn operator" onclick="setOperator('+')">+</button>
-            <!-- Row 7 -->
-            <button class="func" onclick="naturalLog()">ln</button>
-            <button class="btn posNag" onclick="toggleSign()">±</button>
-            <button class="btn num" onclick="inputNumber('0')">0</button>
-            <button class="btn num" onclick="inputDecimal()">.</button>
-            <button class="btn equals" onclick="calculate()">=</button>
-        </div>
-
-        <!-- Programmer Mode -->
-        <div class="programmer-mode" id="programmer-mode" style="display:none";>
-            <!-- Top Bar: Base + Word + Full Keypad -->
-            <div class="programmer-top">
-                <div class="base-options">
-                    <button id="hex-btn-prog" class="base-btn active">HEX</button>
-                    <button id="dec-btn-prog" class="base-btn">DEC</button>
-                    <button id="oct-btn-prog" class="base-btn">OCT</button>
-                    <button id="bin-btn-prog" class="base-btn">BIN</button>
-                </div>
-                <div class="programmer-controls">
-                    <button id="full-keypad-prog" class="active">Keypad</button>
-                    <button id="word-type-prog">WORD</button>
-                    <button class="memory-btn" id="ms">MS</button>
-                    <button class="memory-btn" id="mlist" disabled>M↑</button>
-                </div>
+        <div class="programmer-mode" id="programmer-mode">
+            <div class="base-options">
+                <button id="hex-btn-prog" class="base-btn active">HEX</button>
+                <button id="dec-btn-prog" class="base-btn">DEC</button>
+                <button id="oct-btn-prog" class="base-btn">OCT</button>
+                <button id="bin-btn-prog" class="base-btn">BIN</button>
             </div>
-
-            <!-- Programmer Buttons -->
-            <div class="buttons programmer" id="programmer-buttons">
-                <!-- Row 1 -->
-                <button class="hex-only">A</button>
-                <button onclick="bitShiftLeft()">&lt;&lt;</button>
-                <button onclick="bitShiftRight()">&gt;&gt;</button>
-                <button>C</button>
-                <button class="btn" onclick="backspace()">⌫</button>
-
-                <!-- Row 2 -->
-                <button class="hex-only">B</button>
-                <button>(</button>
-                <button>)</button>
-                <button>%</button>
-                <button class="btn operator" onclick="setOperator('÷')">÷</button>
-
-                <!-- Row 3 -->
-                <button class="btn" onclick="clearAll()">C</button>
-                <button class="btn num" onclick="inputNumber('7')">7</button>
-                <button class="btn num" onclick="inputNumber('8')">8</button>
-                <button class="btn num" onclick="inputNumber('9')">9</button>
-                <button class="btn operator" onclick="setOperator('×')">×</button>
-
-                <!-- Row 4 -->
-                <button class="hex-only">D</button>
-                <button class="btn num" onclick="inputNumber('4')">4</button>
-                <button class="btn num" onclick="inputNumber('5')">5</button>
-                <button class="btn num" onclick="inputNumber('6')">6</button>
-                <button class="btn operator" onclick="setOperator('-')">-</button>
-
-                <!-- Row 5 -->
-                <button class="hex-only">E</button>
-                <button class="btn num" onclick="inputNumber('1')">1</button>
-                <button class="btn num" onclick="inputNumber('2')">2</button>
-                <button class="btn num" onclick="inputNumber('3')">3</button>
-                <button>+</button>
-
-                <!-- Row 6 -->
-                <button class="hex-only">F</button>
-                <button class="btn" onclick="toggleSign()">±</button>
-                <button class="btn num" onclick="inputNumber('0')">0</button>
-                <button class="btn num" onclick="inputDecimal()">.</button>
-                <button class="btn equals" onclick="calculate()">=</button>
+            <div class="programmer-controls">
+                <button id="full-keypad-prog" class="active">Keypad</button>
+                <button id="word-type-prog">WORD</button>
+                <button id="ms-prog">MS</button>
+                <button id="m-prog">M</button>
             </div>
         </div>
 
+        <div class="buttons" id="button-grid"></div>
     </div>
-</body>
-<script src="index.js"></script>
 
+    <script src="index.js"></script>
+</body>
 </html>
